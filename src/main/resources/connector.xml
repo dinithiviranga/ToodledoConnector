@@ -2,5 +2,6 @@
 <connector>
     <component name="ToodleDo" package="org.wso2.esb.connectors" >
         <dependency component="Folders"/>
+        <dependency component="Context"/>
     </component>
 </connector>
