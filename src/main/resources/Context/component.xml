@@ -5,5 +5,10 @@
             <file>addingContext.xml</file>
             <description>Add context</description>
         </component>
+        <component name="deleteContext">
+            <file>deleteContext.xml</file>
+            <description>delete context</description>
+        </component>
+
     </subComponents>
 </component>

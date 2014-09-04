@@ -1,8 +1,8 @@
-<template name="addingContext" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="contextName"  />
+<template name="deleteContext" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="id"  />
     <parameter name="accessToken" />
     <sequence>
-        <property name="uri.var.contextName" expression="$func:contextName" />
+        <property name="uri.var.id" expression="$func:id" />
         <property name="uri.var.accessToken" expression="$func:accessToken" />
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
@@ -10,19 +10,19 @@
         <payloadFactory media-type="xml">
             <format>
                 <xform>
-                    <name>$1</name>
+                    <id>$1</id>
                     <access_token>$2</access_token>
                 </xform>
             </format>
             <args>
-                <arg expression="$func:contextName" />
+                <arg expression="$func:id" />
                 <arg expression="$func:accessToken" />
             </args>
         </payloadFactory>
         <call>
             <endpoint>
                 <http method="post"
-                      uri-template="http://api.toodledo.com/3/contexts/add.php" />
+                      uri-template="http://api.toodledo.com/3/contexts/delete.php" />
             </endpoint>
         </call>
     </sequence>
