@@ -6,11 +6,27 @@
         <property name="uri.var.name" expression="$func:name" />
         <property name="uri.var.accessToken" expression="$func:accessToken" />
 
-        <property name="messageType" value="application/json" scope="axis2" />
+
+        <header name="contentType" value="application/x-www-form-urlencoded" scope="transport" />
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <payloadFactory media-type="xml">
+            <format>
+                <xform>
+                    <name>$1</name>
+                    <access_token>$2</access_token>
+                </xform>
+
+            </format>
+            <args>
+                <arg expression="$func:name" />
+                <arg expression="$func:accessToken" />
+            </args>
+        </payloadFactory>
 
         <call>
             <endpoint>
-                <http method="post" uri-template="http://api.toodledo.com/3/folders/add.php?name={uri.var.name}&amp;access_token={uri.var.accessToken}" />
+                <http method="post" uri-template="http://api.toodledo.com/3/folders/add.php" />
             </endpoint>
         </call>
     </sequence>
